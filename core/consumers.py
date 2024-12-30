@@ -33,6 +33,8 @@ class ChatConsumer(WebsocketConsumer):
         if user_message == '/reset':
             self.scope['session']['current_question_id'] = None
             self.scope['session']['message_history'] = []
+            self.scope['session']['user_answers'] = {}  # This is a dictionary to store user answers
+            self.scope['session']['active'] = True # This is a flag to indicate if the quiz is active
             self.scope['session'].save()
             return
 
